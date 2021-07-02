@@ -6,6 +6,7 @@ const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./swagger.yaml');
 const config = require('./config/system-life');
 const NodeHog = require('nodehog');
+const port = 4545;
 
 app.use(config.middlewares.healthMid);
 app.use('/', config.routers);
@@ -49,6 +50,6 @@ app.put('/stress/:elemento/tempostress/:tempoStress/intervalo/:intervalo/ciclos/
     res.send("OK");
 });
 
-app.listen(8080, () => {
-    console.log("Servidor rodando na porta 8080");
+app.listen(port, () => {
+    console.log("Servidor rodando na porta " + port);
 });
